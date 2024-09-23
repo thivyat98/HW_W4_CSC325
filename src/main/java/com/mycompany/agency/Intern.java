@@ -1,5 +1,6 @@
 package com.mycompany.agency;
 
+
 // TODO 1: Make Intern a child of StaffEmployee
 public class Intern extends StaffEmployee {
 
