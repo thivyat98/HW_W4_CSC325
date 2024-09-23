@@ -1,47 +1,45 @@
 package com.mycompany.agency;
 
-
-
-    // TODO 1: Make TempEmploee a child of StaffEmploee
-
-public class TempEmploee 
-{
+// TODO 1: Make TempEmployee a child of StaffEmployee
+public class TempEmployee extends StaffEmployee {
     private int hoursWorked;
 
     //-----------------------------------------------------------------
     //  Constructor: Sets up this hourly employee using the specified
     //  information.
     //-----------------------------------------------------------------
-    public TempEmploee(String eName, String eAddress, String ePhone,
-            String socSecNumber, double rate)
-    {
+    public TempEmployee(String eName, String eAddress, String ePhone,
+                        String socSecNumber, double rate) {
+        // Call the constructor of the parent class (StaffEmployee)
         super(eName, eAddress, ePhone, socSecNumber, rate);
-
         hoursWorked = 0;
     }
 
     //-----------------------------------------------------------------
-    // TODO2: Adds the specified number of hours to this employee's
+    // TODO 2: Adds the specified number of hours to this employee's
     //  accumulated hours.
     //-----------------------------------------------------------------
-    public void addHours(int moreHours)
-    {
-        
+    public void addHours(int moreHours) {
+        hoursWorked += moreHours;
     }
 
     //-----------------------------------------------------------------
-    // TODO3: Computes and returns the pay for this hourly employee.
+    // TODO 3: Computes and returns the pay for this hourly employee.
     //-----------------------------------------------------------------
-    public double pay()
-    {
-
+    @Override
+    public double pay() {
+        // Return pay based on rate and hours worked
+        double pay = payRate * hoursWorked;
+        hoursWorked = 0; // Reset hours after pay
+        return pay;
     }
 
     //-----------------------------------------------------------------
-    // TODO4: Returns information about this hourly employee as a string.
+    // TODO 4: Returns information about this hourly employee as a string.
     //-----------------------------------------------------------------
-    public String toString()
-    {
-
+    @Override
+    public String toString() {
+        // Return employee information using the parent class's toString method
+        return super.toString() + "\nHours worked: " + hoursWorked;
     }
 }
